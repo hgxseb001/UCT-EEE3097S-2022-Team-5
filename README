@@ -1,0 +1,5 @@
+How to use code: 
+
+Compression: The actual testing occurs in the main.c file. For it to function correctly, it may be necessary to change the file paths used. To run the code, type make all in a Unix terminal. If no compilation errors are reported, execute ./main to run the tests. 
+
+To prepare the input data for processing and analysis, review the dataProcessor.py script in the processData folder. 
