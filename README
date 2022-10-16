@@ -1,5 +1,70 @@
-How to use code: 
+EEE3097S Project 2022
+Authors:
+Gabriel Nicholas
+Sebastian Haug
 
-Compression: The actual testing occurs in the main.c file. For it to function correctly, it may be necessary to change the file paths used. To run the code, type make all in a Unix terminal. If no compilation errors are reported, execute ./main to run the tests. 
+This project is meant to run on an STM32F0 discovery board. It compresses and encrypts IMU data on the board
+and then transmits it via UART. The data is received by a computer, and decrypted and decompressed.
 
-To prepare the input data for processing and analysis, review the dataProcessor.py script in the processData folder. 
+The project makes use of the following github repositories:
+Heatshrink compression: https://github.com/atomicobject/heatshrink
+stm32_hal_icm20948: https://github.com/mokhwasomssi/stm32_hal_icm20948
+
+Items needed:
+
+-STM32F0 Discovery board
+-SparkFun 9DoF IMU Breakout - ICM-20948
+-USB to Uart Converter
+
+Connect the components to the STM as follows:
+
+-Connect 5v and GND of the STM32 to the USB2UART
+-Connect PA2 to RXD on the USB2UART
+-Connect 3.3v and GND of the STM32 to the IMU
+-Connect the SPI pins of the IMU as follows:
+PA4 - CS
+PB15 - MOSI
+PB14 - MISO
+PB13 - SCK
+
+
+Running proof of concept tests on a computer:
+
+1. Download the ComputerCode&PythonScripts folder
+2. Navigate into the processData folder
+3. open the dataProcessor.py script to preprocess sample input data. View the dataX.csv files for required formatting
+4. change input file path to sample data
+5. change output file path to suitable file
+6. run the python script
+7. navigate back into the ComputerCode&PythonScripts folder
+8. open the compressEncrypt.c file
+9. change the input file path to the output of the dataProcessor.py script
+10. change the output file path to suitable file
+11. Open a UNIX terminal and navigate into the folder
+12. type 'make all' to compile
+13. type './compressEncrypt' to run tests. 
+14. the processData.py script can be used to verify that the output file is identical to the input file
+
+
+
+Run tests on the STM32 board:
+
+(connect all components as described above)
+
+1. download MCUCodeC&E.zip
+2. extract and open using cubeIDE
+3. upload the main.c file to the STM32 board
+4. download ComputerCode&PythonScripts folder and open it
+5. open the serialRead.py script
+6. edit the output file path to something suitable
+7. run the script
+8. open the decompress.c file
+9. change the input file path to the output file path of the serialRead.py script
+10. change the output file path to something more suitable
+11. open a UNIX terminal and navigate into the ComputerCode&PythonScripts folder
+12. type 'make all' to compile
+13. type './decompress' to run
+14. open the displayData.py script
+15. change the input file path to the output file path of the decompress.c file
+16. run the displayData script to view plotted data
+
