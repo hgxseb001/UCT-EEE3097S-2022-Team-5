@@ -68,3 +68,12 @@ Run tests on the STM32 board:
 15. change the input file path to the output file path of the decompress.c file
 16. run the displayData script to view plotted data
 
+
+Check that the sensor is working:
+
+(connect all components as described above)
+
+1. download MCUCodeSensorTest.zip
+2. extract and open using cubeIDE
+3. upload the main.c file to the STM32 board
+4. view live data using a serial plotter such as Tauno-Serial-Plotter
