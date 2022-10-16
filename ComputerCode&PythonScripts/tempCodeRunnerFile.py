@@ -1,1 +1,0 @@
-ser = serial.Serial('/dev/ttyUSB0') 
